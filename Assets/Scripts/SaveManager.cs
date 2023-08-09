@@ -27,6 +27,7 @@ public class SaveManager : MonoBehaviour
         data.level = GameManager.level;
         data.sfxVolume = VolumeManager.sfxVolume;
         data.bgmVolume = VolumeManager.bgmVolume;
+        data.isGameCompleted = GameManager.isGameCompleted;
 
         WriteData();
     }
@@ -39,6 +40,7 @@ public class SaveManager : MonoBehaviour
             data.level = 1;
         }
         GameManager.level = data.level;
+        GameManager.isGameCompleted = data.isGameCompleted;
         VolumeManager.Instance.SetVolumes(data.sfxVolume, data.bgmVolume);
 
         GameManager.Instance.LoadLevel();

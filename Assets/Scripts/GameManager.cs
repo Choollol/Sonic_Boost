@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     public static int level = 1;
 
-    private bool isGameCompleted = false;
+    public static bool isGameCompleted = false;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -190,7 +190,14 @@ public class GameManager : MonoBehaviour
         transition.StartTransition();
         isGameActive = false;
         yield return new WaitForSeconds(2);
-        SceneManager.UnloadSceneAsync("Level " + level);
+        if (isGameCompleted)
+        {
+            SceneManager.UnloadSceneAsync("End_Scene");
+        }
+        else
+        {
+            SceneManager.UnloadSceneAsync("Level " + level);
+        }
         level = newLevel;
         LoadLevel();
         yield return new WaitForSeconds(0.5f);

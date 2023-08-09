@@ -8,4 +8,5 @@ public class SaveData
     public int level;
     public float sfxVolume;
     public float bgmVolume;
+    public bool isGameCompleted;
 }
